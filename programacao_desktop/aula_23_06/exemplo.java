@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Consulta SIOPs (Java puro)");
+        JFrame frame = new JFrame("Consulta SIOPs");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 400);
 
