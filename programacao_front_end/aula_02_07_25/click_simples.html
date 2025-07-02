@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+    <head>
+        <meta charset="utf-8" >
+        <title>Eventos de Clique  Simples </title>
+        <style>
+            #clickBox {
+            width: 200px; height: 200px;
+            background: #eee; margin: 20px;
+            display: flex; align-items: center;
+            justify-content: center;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="clickBox">Clique ou Duplo-Clique</div>
+        <p id="clickStatus"></p>
+        
+        <script>
+            const box = document.getElementById('clickBox');
+            box.addEventListener('click', function() {
+            document.getElementById('clickStatus').textContent = 'Clique simples';
+            });
+        box.addEventListener('dblclick', function() {
+            document.getElementById('clickStatus').textContent = 'Duplo clique';
+            });
+        </script>
+    </body>
+    <script>
+
+    </script>
+</html>
