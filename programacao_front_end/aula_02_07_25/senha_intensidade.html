@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Feedback Progressivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .strength-meter {
+            height: 8px;
+            margin-top: 10px;
+            background: #ddd;
+            border-radius: 3px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .strength-meter::before {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 0;
+            background: transparent;
+            transition: width 0.3s ease, background 0.3s ease;
+        }
+
+        .weak::before {
+            width: 33%;
+            background: #ff4444;
+        }
+
+        .medium::before {
+            width: 66%;
+            background: #ffbb33;
+        }
+
+        .strong::before {
+            width: 100%;
+            background: #00C851;
+        }
+
+        .feedback {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .weak-text { color: #ff4444; }
+        .medium-text { color: #ffbb33; }
+        .strong-text { color: #00C851; }
+    </style>
+</head>
+<body>
+    <form id="strengthForm">
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" required><br>
+        <div class="strength-meter" id="strengthMeter"></div>
+        <div class="feedback" id="strengthFeedback"></div>
+        <br>
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <script>
+        const password = document.getElementById('password');
+        const meter = document.getElementById('strengthMeter');
+        const feedback = document.getElementById('strengthFeedback');
+
+        password.addEventListener('input', function () {
+            const value = this.value;
+            let strength = 0;
+
+            // Zera classes visuais
+            meter.className = 'strength-meter';
+            feedback.textContent = '';
+            feedback.className = 'feedback';
+
+            if (value.length === 0) return;
+
+            if (value.length >= 6) strength++;
+            if (value.length >= 8) strength++;
+            if (/[A-Z]/.test(value)) strength++;
+            if (/\d/.test(value)) strength++;
+            if (/[^A-Za-z0-9]/.test(value)) strength++;
+
+            if (strength <= 2) {
+                meter.classList.add('weak');
+                feedback.textContent = 'Senha fraca';
+                feedback.classList.add('weak-text');
+            } else if (strength <= 4) {
+                meter.classList.add('medium');
+                feedback.textContent = 'Senha média';
+                feedback.classList.add('medium-text');
+            } else {
+                meter.classList.add('strong');
+                feedback.textContent = 'Senha forte';
+                feedback.classList.add('strong-text');
+            }
+        });
+
+        document.getElementById('strengthForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert("Cadastro efetuado!");
+        });
+    </script>
+</body>
+</html>
