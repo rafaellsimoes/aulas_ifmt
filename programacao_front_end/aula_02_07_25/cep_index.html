@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Validação de CEP</title>
+    <style>
+        .error { color: red; }
+        .loading { color: blue; }
+        .valid { color: green; }
+        #addressInfo { margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <form id="cepForm">
+        <label>CEP:
+            <input type="text" id="cep" pattern="\d{5}-?\d{3}" placeholder="00000-000" required>
+            <span id="cepError" class="error"></span>
+        </label>
+        <div id="addressInfo"></div>
+        <button type="submit">Continuar</button>
+    </form>
+
+    <script>
+        const cepInput = document.getElementById('cep');
+        const cepForm = document.getElementById('cepForm');
+        const error = document.getElementById('cepError');
+        const addressInfo = document.getElementById('addressInfo');
+        
+        // Função para validar o formato do CEP
+        function validateCEPFormat(cep) {
+            const cepRegex = /^\d{5}-?\d{3}$/;
+            return cepRegex.test(cep);
+        }
+        
+        // Função para buscar o endereço
+        async function fetchAddress(cep) {
+            try {
+                addressInfo.innerHTML = "<span class='loading'>Buscando endereço...</span>";
+                const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                
+                if (!response.ok) {
+                    throw new Error('Erro na requisição');
+                }
+                
+                const data = await response.json();
+                
+                if (data.erro) {
+                    error.textContent = "CEP não encontrado";
+                    addressInfo.textContent = "";
+                } else {
+                    error.textContent = "";
+                    addressInfo.innerHTML = `
+                        <p class="valid"><strong>Endereço encontrado:</strong></p>
+                        <p>${data.logradouro || ''}, ${data.bairro || ''}</p>
+                        <p>${data.localidade || ''}/${data.uf || ''}</p>
+                    `;
+                }
+            } catch (err) {
+                error.textContent = "Erro ao buscar CEP. Tente novamente mais tarde.";
+                addressInfo.textContent = "";
+            }
+        }
+        
+        // Evento de blur (quando sai do campo)
+        cepInput.addEventListener('blur', function() {
+            const cep = this.value.replace(/\D/g, '');
+            error.textContent = "";
+            
+            if (!validateCEPFormat(this.value)) {
+                error.textContent = "Formato inválido (use 00000-000 ou 00000000)";
+                return;
+            }
+            
+            if (cep.length !== 8) {
+                error.textContent = "CEP inválido (deve ter 8 dígitos)";
+                return;
+            }
+            
+            fetchAddress(cep);
+        });
+        
+        // Evento de submit do formulário
+        cepForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const cep = cepInput.value.replace(/\D/g, '');
+            
+            if (!validateCEPFormat(cepInput.value)) {
+                error.textContent = "Formato inválido (use 00000-000 ou 00000000)";
+                return;
+            }
+            
+            if (cep.length !== 8) {
+                error.textContent = "CEP inválido (deve ter 8 dígitos)";
+                return;
+            }
+            
+            // Aqui você pode adicionar a lógica para continuar
+            alert("Formulário válido! CEP: " + cep);
+        });
+    </script>
+</body>
+</html>
