@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Flexível Completo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 100vh;
+    }
+
+    nav {
+      flex: 1 1 200px;
+      background-color: #f0f0f0;
+      padding: 15px;
+    }
+
+    main {
+      flex: 3 1 400px;
+      background-color: #ffffff;
+      padding: 15px;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Meu Site Responsivo</h1>
+  </header>
+
+  <div class="container">
+    <nav>
+      <h3>Menu</h3>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Sobre</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h2>Conteúdo Principal</h2>
+      <p>Este é o conteúdo principal da página. Ele ocupa mais espaço na tela quando comparado com o menu lateral e se adapta conforme o tamanho do dispositivo.</p>
+    </main>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Meu Site Flexível</p>
+  </footer>
+
+</body>
+</html>
