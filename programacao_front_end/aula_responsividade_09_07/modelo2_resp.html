@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout Líquido Responsivo</title>
+    <style>
+        /* Reset Básico */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.6;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 20px;
+        }
+        
+        /* Container Principal */
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Cabeçalho */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        /* Sistema de Colunas */
+        .coluna {
+            float: left;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .coluna-esquerda {
+            width: 20%;
+            margin-right: 2%;
+        }
+        
+        .coluna-centro {
+            width: 50%;
+            margin-right: 2%;
+        }
+        
+        .coluna-direita {
+            width: 24%;
+        }
+        
+        /* Rodapé */
+        footer {
+            clear: both;
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .coluna-esquerda, 
+            .coluna-centro, 
+            .coluna-direita {
+                width: 100%;
+                float: none;
+                margin-right: 0;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+        
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .coluna-esquerda {
+                width: 30%;
+            }
+            
+            .coluna-centro {
+                width: 66%;
+                margin-right: 0;
+            }
+            
+            .coluna-direita {
+                width: 100%;
+                float: none;
+                margin-top: 20px;
+            }
+        }
+        
+        /* Limpeza de Floats */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container clearfix">
+        <header>
+            <h1>Meu Site Responsivo</h1>
+            <p>Layout que se adapta a diferentes tamanhos de tela</p>
+        </header>
+        
+        <div class="coluna coluna-esquerda">
+            <h2>Menu</h2>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+                <li>Item 3</li>
+            </ul>
+        </div>
+        
+        <div class="coluna coluna-centro">
+            <h2>Conteúdo Principal</h2>
+            <p>Este layout possui três colunas em desktop, duas em tablet e uma em smartphones.</p>
+            <p>As media queries alteram a disposição conforme o tamanho da tela.</p>
+        </div>
+        
+        <div class="coluna coluna-direita">
+            <h2>Barra Lateral</h2>
+            <p>Conteúdo adicional ou widgets podem ser colocados aqui.</p>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Modelo de Aula. Programação WEB-FRONT.</p>
+            
+        </footer>
+    </div>
+</body>
+</html>
