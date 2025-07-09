@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Layout Líquido Genérico</title>
+    <style>
+        /* Estilos Base */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 20px;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        /* Container Principal */
+        .container {
+            width: 90%;
+            margin: 2em auto;
+            overflow: hidden; /* Limpa os floats */
+        }
+        
+        /* Colunas */
+        .coluna-a {
+            width: 20%;
+            float: left;
+            background-color: #fff;
+            padding: 15px;
+            margin-right: 2%;
+        }
+        
+        .coluna-b {
+            width: 50%;
+            float: left;
+            background-color: #fff;
+            padding: 15px;
+            margin-right: 2%;
+        }
+        
+        .coluna-c {
+            width: 24%;
+            float: right;
+            background-color: #fff;
+            padding: 15px;
+        }
+        
+        /* Estilos de Tipografia */
+        h2 {
+            color: #444;
+            margin-bottom: 15px;
+        }
+        
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="coluna-a">
+            <h2>Coluna A</h2>
+            <p>Conteúdo da primeira coluna (20%).</p>
+        </div>
+        
+        <div class="coluna-b">
+            <h2>Coluna B</h2>
+            <p>Conteúdo principal (50%). Layout líquido com proporções fixas entre colunas.</p>
+        </div>
+        
+        <div class="coluna-c">
+            <h2>Coluna C</h2>
+            <p>Última coluna (24%). Totalizando 96% (20+50+24+2 margem).</p>
+        </div>
+    </div>
+</body>
+</html>
