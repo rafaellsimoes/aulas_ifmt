@@ -1,0 +1,105 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+\definecolor{mdnblue}{RGB}{83, 176, 253}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{Guia Completo: Validação de Formulários com Eventos JavaScript}
+\author{Professor}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Um pouco de Responsividade de CSS dinâmico}
+Nos primórdios da internet, as páginas eram basicamente estáticas sem muito dinamismo, com o passar do tempo as estruturas evoluíram para estruturas responsivas como o exemplo abaixo
+\begin{lstlisting}[language=HTML]
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>A liquid layout</title>
+    <style>
+      body {
+        font:
+          1.2em Helvetica,
+          Arial,
+          sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #eee;
+      }
+      .wrapper {
+        width: 90%;
+        margin: 2em auto;
+      }
+
+      .col1 {
+        width: 25%;
+        float: left;
+        background-color: #fff;
+      }
+
+      .col2 {
+        width: 70%;
+        float: right;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="col1">
+        <p>
+          Sobre o dinamismo do CSS
+        </p>
+      </div>
+      <div class="col2">
+        <p>
+          Nos primórdios da internet, as páginas eram estáticas e o design era
+          limitado. Com o tempo, o CSS evoluiu, permitindo layouts mais dinâmicos e responsivos.
+
+        </p>
+        <p>
+          Um exemplo claro é o uso de layouts líquidos, onde os elementos se ajustam a experiência de tela,
+          basicamente se ajustam ao tamanho da tela do navegador, como esta página por exemplo.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
+
+\end{lstlisting}
+\end{document}
