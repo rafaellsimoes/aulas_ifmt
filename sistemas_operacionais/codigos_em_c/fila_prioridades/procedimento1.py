@@ -23,8 +23,8 @@ class FilaPrioridade:
 
 def sistema_hospitalar():
     fp = FilaPrioridade()
-    # Adiciona pacientes com prioridades (1 = emergência, 2 = muito urgente, 
-    # 3 = urgente, 4 = pouco urgente, 5 = rotina)
+    # Adiciona pacientes com prioridades (5 = emergência, 4 = muito urgente, 
+    # 3 = urgente, 2 = pouco urgente, 1 = rotina)
     fp.inserir("Paciente A - Fratura exposta", 1)
     fp.inserir("Paciente B - Check-up anual", 5)
     fp.inserir("Paciente C - Dor no peito", 1)
